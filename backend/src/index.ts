@@ -4,7 +4,7 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-import router from './routes/workouts';
+import router from './routes/bugs';
 
 dotenv.config();
 
@@ -25,7 +25,7 @@ app.get("/", (req: Request, res: Response) => {
     res.json({msg: "Welcome to App"});
 });
 
-app.use('/api/workouts', router);
+app.use('/api/bugs', router);
 
 if (process.env.MONGO_URI != undefined) {
     mongoose.connect(process.env.MONGO_URI)
