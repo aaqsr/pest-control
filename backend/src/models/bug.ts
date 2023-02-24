@@ -12,7 +12,7 @@ const bugSchema = new Schema({
     description: {
         type: String,
         default: "",
-        required: true
+        required: false
     },
     bug_level: {
         // 0 - 3, 
@@ -22,7 +22,7 @@ const bugSchema = new Schema({
         // 3 is app-breaking catastrophic high priority bug
         type: Number,
         default: 0,
-        required: true
+        required: false
     },
     assigned_to: {
         // type: mongoose.Schema.Types.ObjectId, ref: 'User',
@@ -30,7 +30,7 @@ const bugSchema = new Schema({
         type: String,
         default: "",
         // TODO Make an unassigned user
-        required: true
+        required: false
     }
 }, {
     // automatically adds an identity and timestamp 
