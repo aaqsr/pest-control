@@ -57,7 +57,7 @@ export const getBug = async (req:express.Request, res:express.Response) => {
     res.status(200).json(bg);
 }
 
-export const delBug =async (req:express.Request, res: express.Response) => {
+export const delBug = async (req:express.Request, res: express.Response) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) { 
@@ -65,7 +65,28 @@ export const delBug =async (req:express.Request, res: express.Response) => {
         return;
     } 
 
+    // same thing as find by id and del. 
+    // this finds the bug with the _id 
+    // field equal to the id 
     const bg = await bug.findOneAndDelete({ _id: id });
+
+    if (!bg) {
+        res.status(404).json({ error: "No such bug" });
+        return;
+    }
+
+    res.status(200).json(bg);
+}
+
+export const updateBug = async (req: express.Request, res: express.Response) => {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        res.status(404).json({ error: "Invalid Id" })
+        return;
+    }
+
+    const bg = await bug.findByIdAndUpdate(id, { ...req.body })
 
     if (!bg) {
         res.status(404).json({ error: "No such bug" });
