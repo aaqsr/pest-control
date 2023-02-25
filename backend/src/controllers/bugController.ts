@@ -93,5 +93,7 @@ export const updateBug = async (req: express.Request, res: express.Response) => 
         return;
     }
 
-    res.status(200).json(bg);
+    const bg_new = await Bug.findById(id);
+
+    res.status(200).json(bg_new);
 }
