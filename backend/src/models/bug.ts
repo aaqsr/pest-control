@@ -2,13 +2,14 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema
 
+// TODO Add Tags, Submitted_by, code-example
 const bugSchema = new Schema({
     title: {
         type: String,
         required: true,
         // TODO implement this on the front end?
         length: 40
-    },
+    }, 
     description: {
         type: String,
         default: "",
