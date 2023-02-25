@@ -1,5 +1,5 @@
 import express from "express";
-import { createBug, delBug, getBugs } from "../controllers/bugController";
+import { createBug, delBug, getBugs, updateBug } from "../controllers/bugController";
 
 export const router = express.Router();
 
@@ -16,8 +16,6 @@ router.post('/', createBug)
 router.delete('/:id', delBug)
 
 // Update a buongoose.Schema.Types.ObjectIdg
-router.patch('/:id', (req, res) => {
-    res.json({msg: "Change a bug"})
-})
+router.patch('/:id', updateBug)
 
 export default router;

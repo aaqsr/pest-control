@@ -1,5 +1,5 @@
 import express from "express";
-import bug from "../models/bug";
+import Bug from "../models/bug";
 import mongoose from "mongoose";
 
 // create a new Bug
@@ -20,7 +20,7 @@ export const createBug = async (req: express.Request, res: express.Response) => 
     const bug_lvl = load?.bug_level;
 
     try {
-        const bug_doc = await bug.create({title, desc, bug_lvl, assigned_to});
+        const bug_doc = await Bug.create({title, desc, bug_lvl, assigned_to});
         res.status(200).json(bug_doc);
     } catch (error) {
         res.status(400).json({error: error}); // u messed up
@@ -32,7 +32,7 @@ export const createBug = async (req: express.Request, res: express.Response) => 
 export const getBugs = async (req: express.Request, res: express.Response) => {
     // find {} -> find everything and return everything
     // sort createdAt: -1 -> sort by created timestamp in descending (hence the -1)
-    const bugs = await bug.find({}).sort({ createdAt: -1 });
+    const bugs = await Bug.find({}).sort({ createdAt: -1 });
     // gives us all bugs in an array
 
     res.status(200).json(bugs);
@@ -47,7 +47,7 @@ export const getBug = async (req:express.Request, res:express.Response) => {
         return;
     }
 
-    const bg = await bug.findById(id);
+    const bg = await Bug.findById(id);
 
     if (!bg) { 
         res.status(404).json({error: "No such bug"})
@@ -68,7 +68,7 @@ export const delBug = async (req:express.Request, res: express.Response) => {
     // same thing as find by id and del. 
     // this finds the bug with the _id 
     // field equal to the id 
-    const bg = await bug.findOneAndDelete({ _id: id });
+    const bg = await Bug.findOneAndDelete({ _id: id });
 
     if (!bg) {
         res.status(404).json({ error: "No such bug" });
@@ -86,7 +86,7 @@ export const updateBug = async (req: express.Request, res: express.Response) => 
         return;
     }
 
-    const bg = await bug.findByIdAndUpdate(id, { ...req.body })
+    const bg = await Bug.findByIdAndUpdate(id, { ...req.body })
 
     if (!bg) {
         res.status(404).json({ error: "No such bug" });
