@@ -14,7 +14,7 @@ export const bugsReducer = (state: any, action: any) => {
       }
     case 'DELETE_BUG':
       return { 
-        bugs: state.bugs.filter(w => w._id !== action.payload._id) 
+        bugs: state.bugs.filter(function (w: any) { return w._id !== action.payload._id }) 
       }
     default:
       return state;

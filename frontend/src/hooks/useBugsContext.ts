@@ -1,7 +1,7 @@
 import { BugsContext } from "../context/bugContext"
 import { useContext } from "react"
 
-export const useBugsContext = () => {
+export const useBugsContext: any = () => {
   const context = useContext(BugsContext)
 
   if(!context) {
