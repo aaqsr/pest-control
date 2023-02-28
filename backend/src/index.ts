@@ -3,6 +3,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import router from './routes/bugs';
 
@@ -13,6 +14,9 @@ const port = process.env.PORT;
 
 // Middleware
 // invoke next function once done
+// CORS
+app.use(cors({ origin: 'http://localhost:5173' }));
+
 // This logs incomming requests into the terminal
 app.use(express.json());
 app.use((req, res, next) => {
