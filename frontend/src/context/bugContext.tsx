@@ -10,7 +10,7 @@ export const bugsReducer = (state: any, action: any) => {
       }
     case 'CREATE_BUG':
       return { 
-        bugs: [action.payload, ...state.workouts] 
+        bugs: [action.payload, ...state.bugs] 
       }
     case 'DELETE_BUG':
       return { 
