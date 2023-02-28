@@ -15,7 +15,7 @@ const port = process.env.PORT;
 // Middleware
 // invoke next function once done
 // CORS
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: process.env.ORIGIN }));
 
 // This logs incomming requests into the terminal
 app.use(express.json());
