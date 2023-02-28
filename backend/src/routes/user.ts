@@ -8,3 +8,5 @@ router.post('/login', loginUser);
 
 // sign up route
 router.post('/signup', signUpUser);
+
+export default router;

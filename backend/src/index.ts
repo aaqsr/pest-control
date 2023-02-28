@@ -5,7 +5,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import router from './routes/bugs';
+import bugRouter from './routes/bugs';
+import userRouter from './routes/user';
 
 dotenv.config();
 
@@ -29,7 +30,8 @@ app.get("/", (req: Request, res: Response) => {
     res.json({msg: "Welcome to App"});
 });
 
-app.use('/api/bugs', router);
+app.use('/api/bugs', bugRouter);
+app.use('/api/user', userRouter);
 
 if (process.env.MONGO_URI != undefined) {
     mongoose.connect(process.env.MONGO_URI)
