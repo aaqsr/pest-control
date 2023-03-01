@@ -61,4 +61,18 @@ userSchema.statics.signup = async function (email: string, password: string) {
     return user;
 }
 
+// static login method
+userSchema.statics.login = async function (email: string, password: string) {
+    // validation
+    if (!email || !password) {
+        throw Error("Email and Password are required.")
+    } 
+
+    const user = await this.findOne({ email });
+
+    if (!user) {
+        throw Error("Incorrect Email");
+    } 
+}
+
 export default mongoose.model('User', userSchema); 

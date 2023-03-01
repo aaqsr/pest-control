@@ -13,8 +13,19 @@ const createToken = (_id: string) => {
 }
 
 // login user
-export const loginUser =async (req: Express.Request, res: Express.Response) => {
-    
+export const loginUser =async (req: express.Request, res: express.Response) => {
+    const { email, password } = req.body;
+    try {
+        const User_any: any = User;
+        const user = await User_any.login(email, password);
+
+        // create token
+        const token = createToken(user._id);
+
+        res.status(200).json({ email, token });
+    } catch(error: any) {
+        res.status(400).json({ error: error.message });
+    } 
 }
 
 // sign up user
