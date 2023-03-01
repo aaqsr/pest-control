@@ -7,7 +7,7 @@ const BugDetails = ({ bug }: any) => {
 
   const handleClick = async () => {
     const response = await fetch(APP_URL + '/api/bugs/' + bug._id, {
-      method: 'DELETE_BUG'
+      method: 'DELETE'
     })
     const json = await response.json()
 
