@@ -14,17 +14,17 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <Link to="/">
-                    <h1>Pest Control</h1>
+                    <h1 className='nav-h1'>Pest Control</h1>
                 </Link>
                 <nav>
                     {user ?
                         (<div>
-                            <span style={{ fontWeight: 700, marginRight: '1em' }}>{user.name}</span>
-                            <button onClick={handleLogOutButtonClick}>Log out</button>
+                            <span style={{ fontWeight: 700, margin: '1em' }}>{user.name}</span>
+                            <button className="nav-button" onClick={handleLogOutButtonClick}>Log out</button>
                         </div>) :
                         (<div>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup">Signup</Link>
+                            <Link className="nav-button" to="/login">Login</Link>
+                            <Link className="nav-button" to="/signup">Signup</Link>
                         </div>)}
                 </nav>
             </div>
