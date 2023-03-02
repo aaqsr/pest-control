@@ -73,6 +73,14 @@ userSchema.statics.login = async function (email: string, password: string) {
     if (!user) {
         throw Error("Incorrect Email");
     } 
+
+    const match = await bcrypt.compare(password, user.password);
+
+    if (!match) {
+        throw Error("Invalid login");
+    }
+
+    return user;
 }
 
 export default mongoose.model('User', userSchema); 
