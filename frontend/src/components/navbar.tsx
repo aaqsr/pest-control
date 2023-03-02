@@ -19,7 +19,7 @@ const Navbar = () => {
                 <nav>
                     {user ?
                         (<div>
-                            <span>{user?.name}</span>
+                            <span style={{ fontWeight: 700, marginRight: '1em' }}>{user.name}</span>
                             <button onClick={handleLogOutButtonClick}>Log out</button>
                         </div>) :
                         (<div>

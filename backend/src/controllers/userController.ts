@@ -18,11 +18,12 @@ export const loginUser =async (req: express.Request, res: express.Response) => {
     try {
         const User_any: any = User;
         const user = await User_any.login(email, password);
+        const name = user.name;
 
         // create token
         const token = createToken(user._id);
 
-        res.status(200).json({ email, token });
+        res.status(200).json({ name, email, token });
     } catch(error: any) {
         res.status(400).json({ error: error.message });
     } 
