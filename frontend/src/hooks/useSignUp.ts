@@ -4,7 +4,7 @@ import { APP_URL } from "../global";
 
 export const useSignUp = () => {
     const [error, setError] = useState(null);
-    const [isLoading, setIsLoading]: [null|boolean, any] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     const { dispatch }: any = useAuthContext();
 
     const signup = async (email: string, password: string) => {
