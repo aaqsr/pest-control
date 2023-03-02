@@ -16,10 +16,23 @@ const BugDetails = ({ bug }: any) => {
     }
   }
 
+  const bugLevelHandler = (lvl: number) => {
+    switch (lvl) {
+      case 0:
+        return lvl + " - " + "Not Important";
+      case 1:
+        return lvl + " - " + "Important";
+      case 2:
+        return lvl + " - " + "Urgent";
+      case 3:
+        return lvl + " - " + "Catastrophic";
+    }
+  }
+
   return (
     <div className="workout-details">
       <h4>{bug.title}</h4>
-      <p><strong>Level: </strong>{bug.bug_level}</p>
+      <p><strong>Level: </strong>{bugLevelHandler(bug.bug_level)}</p>
       {/* <p><strong>Assigned to: </strong>{ bug.assigned_to }</p> */}
       <p><strong>Description: </strong>{bug.description}</p>
       {/* <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p> */}
