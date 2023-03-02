@@ -23,7 +23,10 @@ const BugDetails = ({ bug }: any) => {
       {/* <p><strong>Assigned to: </strong>{ bug.assigned_to }</p> */}
       <p><strong>Description: </strong>{bug.description}</p>
       {/* <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p> */}
-      <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
+      {/* <span className="material-symbols-outlined" onClick={handleClick}>Delete</span> */}
+      <div className='align-right'>
+        <button className="bug-del-button nav-button" onClick={handleClick}>Delete</button>
+      </div>
     </div>
   )
 }

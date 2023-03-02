@@ -52,19 +52,24 @@ header a {
   color: var(--primary);
 }
 .workout-details p {
-  margin: 0;
+  margin: 5px;
   font-size: 0.9em;
   color: #555;
 }
-.workout-details span {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.bug-del-button {
+  /* position: absolute; */
+  /* top: 20px; */
+  /* right: 20px; */
   cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: #333;
+  /* background: #f1f1f1; */
+  /* padding: 6px; */
+  /* border-radius: 50%; */
+  /* color: #333; */
+  margin: 10px;
+  padding: 5px;
+}
+.align-right {
+  text-align: right;
 }
 
 /* new workout form */
@@ -131,7 +136,25 @@ nav {
     font-size: 1.2rem;
     /* font-size: 120%; */
   }
+
+.bug-del-button {
+  position:inherit;
+  /* top: 20px; */
+  /* right: 20px; */
+  cursor: pointer;
+  /* background: #f1f1f1; */
+  /* padding: 6px; */
+  /* border-radius: 50%; */
+  /* color: #333; */
 }
+}
+
+@media only screen and (max-width: 860px) {
+.home {
+  display:inherit;
+}
+}
+
 
 /* auth forms */
 form.signup, form.login {
