@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { APP_URL } from '../global';
 import { useBugsContext } from '../hooks/useBugsContext'
 
 const BugForm = () => {
@@ -17,7 +18,7 @@ const BugForm = () => {
 
         const bug = { title, desc, lvl, assn };
 
-        const response = await fetch('/api/workouts', {
+        const response = await fetch(APP_URL + '/api/bugs', {
             method: 'POST',
             body: JSON.stringify(bug),
             headers: {
@@ -83,7 +84,7 @@ const BugForm = () => {
                 className={emptyFields.includes('reps') ? 'error' : ''}
             />
 
-            <button>Add Workout</button>
+            <button>Add Bug</button>
             {error && <div className="error">{error}</div>}
         </form>
     )

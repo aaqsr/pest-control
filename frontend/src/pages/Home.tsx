@@ -4,6 +4,7 @@ import { useBugsContext } from "../hooks/useBugsContext"
 // components
 import BugDetails from "../components/BugDetails"
 import { APP_URL } from "../global"
+import BugForm from "../components/BugForm"
 // import BugForm from "../components/BugForm"
 
 const Home = () => {
@@ -28,7 +29,7 @@ const Home = () => {
                   <BugDetails bug={bug} key={bug._id} />
                 ))}
       </div>
-      {/* <BugForm /> */}
+      <BugForm />
     </div>
   )
 }
