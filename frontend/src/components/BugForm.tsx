@@ -6,9 +6,9 @@ const BugForm = () => {
     const { dispatch } = useBugsContext();
 
     const [title, setTitle] = useState('');
-    const [desc, setDesc] = useState('');
-    const [lvl, setLvl] = useState(0);
-    const [assn, setAssn] = useState('');
+    const [description, setDesc] = useState('');
+    const [bug_level, setLvl] = useState(0);
+    const [assigned_to, setAssn] = useState('');
 
     const [error, setError]: any = useState(null);
     const [emptyFields, setEmptyFields]: any = useState([]);
@@ -16,7 +16,7 @@ const BugForm = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
 
-        const bug = { title, desc, lvl, assn };
+        const bug = { title, description, bug_level, assigned_to };
 
         const response = await fetch(APP_URL + '/api/bugs', {
             method: 'POST',
@@ -60,14 +60,14 @@ const BugForm = () => {
             <input
                 type="text"
                 onChange={(e) => setDesc(e.target.value)}
-                value={desc}
+                value={description}
                 className={emptyFields.includes('load') ? 'error' : ''}
             />
 
             <label>Bug Level:</label>
             <select
                 onChange={(e) => setLvl(parseInt(e.target.value, 10))}
-                value={lvl}
+                value={bug_level}
                 className={emptyFields.includes('reps') ? 'error' : ''}
             >
                 <option value={0}>0: Not Important</option>
@@ -80,7 +80,7 @@ const BugForm = () => {
             <input
                 type="text"
                 onChange={(e) => setAssn(e.target.value)}
-                value={assn}
+                value={assigned_to}
                 className={emptyFields.includes('reps') ? 'error' : ''}
             />
 
