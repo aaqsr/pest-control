@@ -20,7 +20,7 @@ const BugDetails = ({ bug }: any) => {
     <div className="workout-details">
       <h4>{bug.title}</h4>
       <p><strong>Level: </strong>{bug.bug_level}</p>
-      <p><strong>Assigned to: </strong>{ bug.assigned_to }</p>
+      {/* <p><strong>Assigned to: </strong>{ bug.assigned_to }</p> */}
       <p><strong>Description: </strong>{bug.description}</p>
       {/* <p>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</p> */}
       <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
