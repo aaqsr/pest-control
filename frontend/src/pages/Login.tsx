@@ -7,7 +7,7 @@ const Login = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        console.log(email, password);
+        // console.log(email, password);
     }
 
     return (
