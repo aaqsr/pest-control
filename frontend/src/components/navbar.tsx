@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLogOut } from '../hooks/useLogOut'
 
+
 const Navbar = () => {
     const { logout } = useLogOut();
 
