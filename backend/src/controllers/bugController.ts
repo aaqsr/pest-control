@@ -11,11 +11,12 @@ interface reqBody {
     assigned_to?: String
 }
 
-export const createBug = async (req: express.Request, res: express.Response) => {
+export const createBug = async (req: any, res: express.Response) => {
     const { title, description, bug_level, assigned_to }: reqBody = req.body;
 
     try {
-        const bug_doc = await Bug.create({title, description, bug_level, assigned_to});
+        const user_id = req.user._id;
+        const bug_doc = await Bug.create({ title, description, bug_level, assigned_to, user_id })
         res.status(200).json(bug_doc);
     } catch (error) {
         res.status(400).json({error: error}); // u messed up
@@ -24,10 +25,11 @@ export const createBug = async (req: express.Request, res: express.Response) => 
 
 // get all Bugs
 // TODO: Pagination?
-export const getBugs = async (req: express.Request, res: express.Response) => {
+export const getBugs = async (req: any, res: express.Response) => {
+    const user_id = req.user._id;
     // find {} -> find everything and return everything
     // sort createdAt: -1 -> sort by created timestamp in descending (hence the -1)
-    const bugs = await Bug.find({}).sort({ createdAt: -1 });
+    const bugs = await Bug.find({ user_id }).sort({ createdAt: -1 });
     // gives us all bugs in an array
 
     res.status(200).json(bugs);

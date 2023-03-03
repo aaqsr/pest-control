@@ -32,6 +32,18 @@ const bugSchema = new Schema({
         default: "",
         // TODO Make an unassigned user
         required: false
+    },
+    // person who owns the bug
+    // TODO only owner can edit/delete the bug
+    owner_id: {
+        type: String,
+        required: true
+    },
+    // TODO these viewers can see the bug but not delete, do this later
+    viewers_id: {
+        type: [String], 
+        required: false,
+        default: [""]
     }
 }, {
     // automatically adds an identity and timestamp 
