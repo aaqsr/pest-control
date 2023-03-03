@@ -1,7 +1,11 @@
 import express from "express";
 import { createBug, delBug, getBug, getBugs, updateBug } from "../controllers/bugController";
+import { requireAuth } from "../middleware/requireAuth";
 
 export const router = express.Router();
+
+// user must be authenticated!
+router.use(requireAuth);
 
 router.get('/', getBugs);
 
