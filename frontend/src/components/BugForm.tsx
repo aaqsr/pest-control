@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { APP_URL } from '../global';
+import { useAuthContext } from '../hooks/useAuthContext';
 import { useBugsContext } from '../hooks/useBugsContext'
 
 const BugForm = () => {
     const { dispatch } = useBugsContext();
+    const { user }: any = useAuthContext();
 
     const [title, setTitle] = useState('');
     const [description, setDesc] = useState('');
@@ -15,6 +17,11 @@ const BugForm = () => {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
+        
+        if (!user) {
+            setError("You must be logged in!")
+            return;
+        }
 
         const bug = { title, description, bug_level, assigned_to };
 
@@ -22,7 +29,8 @@ const BugForm = () => {
             method: 'POST',
             body: JSON.stringify(bug),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         });
 
