@@ -23,7 +23,9 @@ const BugForm = () => {
             return;
         }
 
-        const bug = { title, description, bug_level, assigned_to };
+        const owner_id = user._id;
+
+        const bug = { title, description, bug_level, assigned_to, owner_id };
 
         const response = await fetch(APP_URL + '/api/bugs', {
             method: 'POST',
@@ -69,14 +71,14 @@ const BugForm = () => {
                 type="text"
                 onChange={(e) => setDesc(e.target.value)}
                 value={description}
-                className={emptyFields.includes('load') ? 'error' : ''}
+                className={emptyFields.includes('description') ? 'error' : ''}
             />
 
             <label>Bug Level:</label>
             <select
                 onChange={(e) => setLvl(parseInt(e.target.value, 10))}
                 value={bug_level}
-                className={emptyFields.includes('reps') ? 'error' : ''}
+                className={emptyFields.includes('bug_level') ? 'error' : ''}
             >
                 <option value={0}>0: Not Important</option>
                 <option value={1}>1: Important</option>
@@ -89,7 +91,7 @@ const BugForm = () => {
                 type="text"
                 onChange={(e) => setAssn(e.target.value)}
                 value={assigned_to}
-                className={emptyFields.includes('reps') ? 'error' : ''}
+                className={emptyFields.includes('assigned_to') ? 'error' : ''}
             />
 
             <button>Add Bug</button>

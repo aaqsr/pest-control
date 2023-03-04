@@ -3,7 +3,7 @@ import { useBugsContext } from "./useBugsContext";
 
 export const useLogOut = () => {
     const { dispatch: authDispatch }: any = useAuthContext();
-    const { dispatch: bugsDispatch } = useBugsContext();
+    const { dispatch: bugsDispatch }: any = useBugsContext();
 
     const logout = () => {
         // remove user from storage
@@ -11,7 +11,7 @@ export const useLogOut = () => {
 
         // dispatch logout action
         authDispatch({ type: 'LOGOUT' });
-        bugsDispatch({ type: 'SET_BUGS', payload: null });
+        bugsDispatch({ type: 'SET_BUG', payload: null });
     }
 
     return { logout };
